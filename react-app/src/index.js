@@ -82,3 +82,35 @@ const combinedObject = {...firstObject, ...secondObject, location: 'LB'};
 const clonedObject = {...firstObject};
 console.log(combinedObject);
 
+// =========
+// Classes
+// =========
+// the benefits of using Classes
+class Customer  {
+    constructor (name) {
+        this.name = name;
+    }
+
+    call() {
+        console.log("call");
+    }
+}
+
+const customer01 = new Customer("Alosh");
+console.log(customer01.name);
+
+// Inheritance
+class VipCustomer extends Customer {
+    constructor(name, industry){
+        super(name);
+        this.industry = industry;
+    }
+
+    bookAppointment(){
+        console.log(`call ${this.name} to book an appointment, the client industry is ${this.industry}`);
+    }
+}
+
+const majd = new VipCustomer("majd", "fintech");
+
+majd.bookAppointment();
