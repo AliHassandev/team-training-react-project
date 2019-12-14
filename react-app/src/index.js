@@ -114,3 +114,5 @@ class VipCustomer extends Customer {
 const majd = new VipCustomer("majd", "fintech");
 
 majd.bookAppointment();
+
+// Github cred test
