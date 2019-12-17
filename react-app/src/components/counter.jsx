@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 //cc then tab is a shorthand for the below block
 class Counter extends Component {
     state = {
-        count : 0
+        count : 0,
+        tags: ["tag1", "tag2", "tag3"]
       };
 
     styles = {
@@ -17,7 +18,17 @@ class Counter extends Component {
                     <h1 style={{ fontSize:33, fontWeight: 'bold', color:'red' }}>Hello World</h1>
                     <span style={this.styles} className={this.getBadgeClasses()}>{this.formatCount()}</span>
                     <button className="btn btn-secondary">Increment</button>
+
+            { (this.state.tags.length === 0 && <p>Please add tags</p>)}
+            {this.renderTagsList()}
+
                 </div>);
+    }
+
+    renderTagsList(){
+        if(this.state.tags.length === 0) return <p>There is no tags!</p>;
+
+        return <ul>{ this.state.tags.map(tag => <li key={tag}>{tag}</li>) }</ul>;
     }
 
     getBadgeClasses(){
