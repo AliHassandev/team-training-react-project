@@ -8,6 +8,11 @@ class Counter extends Component {
         tags: ["tag1", "tag2", "tag3"]
       };
 
+      constructor() {
+          super();
+          this.handleIncrement = this.handleIncrement.bind(this);
+      }
+
     styles = {
         fontSize: 22,
         color: '#333',
@@ -17,12 +22,17 @@ class Counter extends Component {
         return (<div>
                     <h1 style={{ fontSize:33, fontWeight: 'bold', color:'red' }}>Hello World</h1>
                     <span style={this.styles} className={this.getBadgeClasses()}>{this.formatCount()}</span>
-                    <button className="btn btn-secondary">Increment</button>
+                    <button onClick={this.handleIncrement}
+                    className="btn btn-secondary">Increment</button>
 
             { (this.state.tags.length === 0 && <p>Please add tags</p>)}
             {this.renderTagsList()}
 
                 </div>);
+    }
+
+    handleIncrement () {
+        console.log("Increment Clicked", this.state.count);
     }
 
     renderTagsList(){
