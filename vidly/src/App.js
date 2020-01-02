@@ -1,13 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import Movies from './components/movies';
 function App() {
   return (
-    <main id="root" role="main" class="container">
+    <main id="root" role="main" className="container">
 
-      <div class="starter-template">
-        <h1>Hello World</h1>
+      <div className="starter-template">
+        <Movies />
       </div>
 
     </main>
