@@ -18,16 +18,15 @@ class Counter extends Component {
         fontWeight: 'bold'
     }; 
     render() { 
-        console.log('props', this.props);
 
         return (<div>
-                    {this.props.children}
                     {/* <h1 style={{ fontSize:33, fontWeight: 'bold', color:'red' }}>Hello World</h1> */}
                     <span style={this.styles} className={this.getBadgeClasses()}>{this.formatCount()}</span>
                     <button 
                     onClick={ () => this.handleIncrement({id : 1}) }
                     className="btn btn-secondary">Increment</button>
 
+                    <button onClick={ () => this.props.onDelete(this.props.id)} className="btn btn-danger btn-sm m-2">Delete</button>
             {/* { (this.state.tags.length === 0 && <p>Please add tags</p>)}
             {this.renderTagsList()} */}
 
