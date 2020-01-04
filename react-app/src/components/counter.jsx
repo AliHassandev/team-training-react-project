@@ -4,8 +4,7 @@ import React, { Component } from 'react';
 //cc then tab is a shorthand for the below block
 class Counter extends Component {
     state = {
-        count : 0,
-        tags: ["tag1", "tag2", "tag3"]
+        value : this.props.value
       };
 
     //   constructor() {
@@ -19,15 +18,16 @@ class Counter extends Component {
         fontWeight: 'bold'
     }; 
     render() { 
+        console.log('props', this.props);
         return (<div>
-                    <h1 style={{ fontSize:33, fontWeight: 'bold', color:'red' }}>Hello World</h1>
+                    {/* <h1 style={{ fontSize:33, fontWeight: 'bold', color:'red' }}>Hello World</h1> */}
                     <span style={this.styles} className={this.getBadgeClasses()}>{this.formatCount()}</span>
                     <button 
                     onClick={ () => this.handleIncrement({id : 1}) }
                     className="btn btn-secondary">Increment</button>
 
-            { (this.state.tags.length === 0 && <p>Please add tags</p>)}
-            {this.renderTagsList()}
+            {/* { (this.state.tags.length === 0 && <p>Please add tags</p>)}
+            {this.renderTagsList()} */}
 
                 </div>);
     }
@@ -35,7 +35,7 @@ class Counter extends Component {
     handleIncrement = product => {
         console.log(product);
         //change the state 
-        this.setState( { count: this.state.count + 1 } );
+        this.setState( { value: this.state.value + 1 } );
     };
 
     renderTagsList(){
@@ -46,12 +46,12 @@ class Counter extends Component {
 
     getBadgeClasses(){
         let classes = "badge m-2 badge-";
-        classes += this.state.count === 0 ? "warning" : "primary";
+        classes += this.state.value === 0 ? "warning" : "primary";
         return classes;
     };
 
     formatCount(){
-        const { count } = this.state;
+        const { value: count } = this.state;
         return count === 0 ? 'Zero' : count;
     };
 
