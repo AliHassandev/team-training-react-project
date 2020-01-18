@@ -17,8 +17,22 @@ class Counter extends Component {
         color: '#333',
         fontWeight: 'bold'
     }; 
-    render() { 
 
+    componentDidUpdate(prevProps, prevState){
+        console.log("previous props", prevProps);
+        console.log("previous State", prevState);
+        if (prevProps.counter.value !== this.props.counter.value){
+            //for example
+            //do an ajax call and to get new data from the server
+        }
+    }
+
+    componentWillUnmount() {
+        console.log("Component - Unmount");
+    }
+
+    render() { 
+        console.log("Counter - Rendered");
         return (<div>
                     {/* <h1 style={{ fontSize:33, fontWeight: 'bold', color:'red' }}>Hello World</h1> */}
                     <span style={this.styles} className={this.getBadgeClasses()}>{this.formatCount()}</span>
