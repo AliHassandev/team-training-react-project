@@ -41,8 +41,9 @@ class Movies extends Component {
     };
 
     handleGenreSelect = genre => {
-        console.log(genre);
+        this.setState({selectedGenre: genre})
     };
+
     render() {  
 
         const {length: count} = this.state.movies;
@@ -57,10 +58,11 @@ class Movies extends Component {
                 <div className="col-3">
                     <ListGroup 
                     items={this.state.genres} 
-                    textProperty={'name'}
-                    valueProperty={'_id'}
-                    onItemSelect={this.state.handleGenreSelect} />
+                    selectedItem={this.state.selectedGenre}
+                    onItemSelect={this.handleGenreSelect} 
+                    />
                 </div>
+
                 <div className="col">
                     <p>Showing {count} movies in the database.</p>
                     <table className="table">
