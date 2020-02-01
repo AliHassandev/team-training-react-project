@@ -14,7 +14,7 @@ const ListGroup = (props) => {
         >{item[textProperty]}</li>) )}
         </ul> );
 };
- 
+
 ListGroup.defaultProps = {
     textProperty: "name",
     valueProperty: "_id"
