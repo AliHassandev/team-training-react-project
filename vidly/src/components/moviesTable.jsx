@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Like from './common/like';
 import TableHeader from './common/tableHeader';
-
+import TableBody from './common/tableBody';
 class MoviesTable extends Component {
 
     columns = [
@@ -9,11 +9,22 @@ class MoviesTable extends Component {
         { path: "genre.name", label: "Genre"},
         { path: "numberInStock", label: "Stock"},
         { path: "dailyRentalRate", label: "Rate"},
-        { key: "like"},
-        { key: "delete"}
+        { 
+            key: "like",
+            content: movie => (<Like 
+            liked={movie.liked} 
+            onClick={() => this.props.onLike(movie)} 
+            />)
+        },
+        { 
+            key: "delete",
+            content: movie => (<button 
+            onClick={ () => this.props.onDelete(movie)} 
+            className="btn btn-danger btn-sm">Delete</button>)
+        }
     ]
     render() { 
-        const {movies, onLike, onDelete, onSort, sortColumn } = this.props;
+        const {movies, onSort, sortColumn } = this.props;
         return (<table className="table">
 
         <TableHeader 
@@ -22,7 +33,11 @@ class MoviesTable extends Component {
         onSort={onSort}
          />
 
-        <tbody>
+        <TableBody
+        columns={this.columns}
+        data={movies}
+        />
+        {/* <tbody>
             { movies.map(movie => (
             <tr key={movie._id}>
                 <td>{movie.title}</td>
@@ -30,17 +45,12 @@ class MoviesTable extends Component {
                 <td>{movie.numberInStock}</td>
                 <td>{movie.dailyRentalRate}</td>
                 <td>
-                    <Like 
-                    liked={movie.liked} 
-                    onClick={() => onLike(movie)} 
-                    />
+                    
                 </td>
-                <td><button 
-                onClick={ () => onDelete(movie)} 
-                className="btn btn-danger btn-sm">Delete</button></td>
+                <td></td>
             </tr>
             ))}
-        </tbody>
+        </tbody> */}
     </table> );
     }
 }
