@@ -15,11 +15,15 @@ class App extends Component {
       <div>
         <NavBar />
         <div className="content">
+            {/* <Route path="/products" component={Products} />
+            <Route path="/posts" component={Posts} />
+            <Route path="/admin" component={Dashboard} />
+            <Route path="/" exact component={Home} /> */}
           <Switch>
             <Route path="/products" component={Products} />
             <Route path="/posts" component={Posts} />
             <Route path="/admin" component={Dashboard} />
-            <Route path="/" exact component={Home} />
+            <Route path="/" component={Home} />
           </Switch>
         </div>
       </div>
