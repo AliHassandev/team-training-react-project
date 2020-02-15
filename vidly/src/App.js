@@ -1,14 +1,17 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import logo from './logo.svg';
-import './App.css';
 import Movies from './components/movies';
 import Customers from './components/customers';
 import Rentals from './components/rentals';
 import NotFound from './components/notFound';
+import NavBar from './components/navBar';
+import './App.css';
 
 function App() {
   return (
+    <React.Fragment>
+    <NavBar />
     <main id="root" role="main" className="container">
       <Switch>
         <Route path="/movies" component={Movies} />
@@ -23,6 +26,7 @@ function App() {
       </div>
 
     </main>
+    </React.Fragment>
       );
 }
 
