@@ -2,18 +2,31 @@ import React, { Component } from 'react';
 
 class LoginForm extends Component {
 
+    //dont over use Ref, only when it's necessary 
+    username = React.createRef();
+
+    componentDidMount() {
+        this.username.current.focus();
+    };
+
     handleSubmit = e => {
         e.preventDefault();
         // call the server 
         console.log("Submitted");
+        const username = this.username.current.val();
     };
+
     render() { 
         return ( <div>
             <h1>Login</h1>
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
-                    <input id="username" type="text" className="form-control"/>
+                    <input 
+                    ref={this.username}
+                    id="username" 
+                    type="text" 
+                    className="form-control"/>
                     </div>
                 <div className="form-group">
                     <label htmlFor="password">Password</label>
