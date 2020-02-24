@@ -37,7 +37,7 @@ class RegisterForm extends Form {
                 {this.renderInput("username", "Username")}
                 {this.renderInput("password", "Password", "password")}
                 {this.renderInput("name", "Name")}
-                {this.renderButton("Refister")}
+                {this.renderButton("Register")}
             </form>
         </div> );
     }
