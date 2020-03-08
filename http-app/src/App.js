@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import http from './services/httpService';
+import { ToastContainer } from 'react-toastify';
 import config from './config.json';
-import "./App.css";
+import 'react-toastify/dist/ReactToastify.css';
+import './App.css';
+
 
 class App extends Component {
   state = {
@@ -39,7 +42,7 @@ class App extends Component {
     this.setState({ posts });
 
     try {
-      await http.delete(config.apiEndpoint + '/999' + post.id);
+      await http.delete(config.apiEndpoint + '/' + post.id);
     } catch (ex) {
       //Expected (404: not found, 400: bad request) - Client errors
       // - display a specific error message
@@ -56,6 +59,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
+        <ToastContainer />
         <button className="btn btn-primary" onClick={this.handleAdd}>
           Add
         </button>
