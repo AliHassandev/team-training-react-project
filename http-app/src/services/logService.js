@@ -7,7 +7,7 @@ function init() {
     }).install();
 }
 
-function log(error) 
+function log(error) {
     Raven.captureException(error);
 }
 
