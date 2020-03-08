@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@sentry/browser": "^5.13.2",
     "axios": "^0.18.1",
-    "bootstrap": "^4.1.2",
+    "bootstrap": "^4.4.1",
+    "raven-js": "^3.27.2",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react-dom": "^16.13.0",
     "react-scripts": "1.1.4",
     "react-toastify": "^4.1.0"
   },
