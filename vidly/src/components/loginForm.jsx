@@ -30,7 +30,7 @@ class LoginForm extends Form {
             //store jwt to locatStorage
             localStorage.setItem('token', jwt);
             //navigate the user to homepage after login
-            this.props.history.push('/');
+            window.location= "/";
             
         } catch (ex) {
             if(ex.response && ex.response.status === 400 ) {
