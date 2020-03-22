@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Joi from 'joi-browser';
 import Form from "./common/form";
-import { login } from "../services/authService";
+import auth from "../services/authService";
 
 class LoginForm extends Form {
 
@@ -26,9 +26,8 @@ class LoginForm extends Form {
         try {
             const { data } = this.state;
             //JWT: JSON Web Token
-            const { data: jwt } = await login(data.username, data.password); 
-            //store jwt to locatStorage
-            localStorage.setItem('token', jwt);
+            await auth.login(data.username, data.password); 
+
             //navigate the user to homepage after login
             window.location= "/";
             

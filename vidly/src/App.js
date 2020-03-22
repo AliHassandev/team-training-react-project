@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import {ToastContainer} from "react-toastify";
-import dwtDecode from 'jwt-decode';
 import logo from './logo.svg';
 import Movies from './components/movies';
 import Customers from './components/customers';
@@ -12,6 +11,7 @@ import MovieForm from './components/movieForm';
 import LoginForm from './components/loginForm';
 import RegisterForm from './components/registerForm';
 import Logout from './components/logout';
+import auth from './services/authService';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { render } from '@testing-library/react';
@@ -22,12 +22,8 @@ import JwtDecode from 'jwt-decode';
   state = {};
 
   componentDidMount() {
-    //getting the current user info from jwt using jwt-decode library
-    try {
-      const jwt = localStorage.getItem("token");
-      const user = JwtDecode(jwt);
-      this.setState( { user } );        
-    } catch (ex) { }
+    const user = auth.getCurrentUser();
+    this.setState( { user } );
   }
 
   render() {
