@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Joi from 'joi-browser';
 import Form from "./common/form";
 import auth from "../services/authService";
+import { Redirect } from 'react-router-dom';
 
 class LoginForm extends Form {
 
@@ -28,8 +29,10 @@ class LoginForm extends Form {
             //JWT: JSON Web Token
             await auth.login(data.username, data.password); 
 
+            const { state } = this.props.location;
+            window.location = state ? state.form.pathname: '/' ;
             //navigate the user to homepage after login
-            window.location= "/";
+            // window.location= "/";
             
         } catch (ex) {
             if(ex.response && ex.response.status === 400 ) {
@@ -41,6 +44,7 @@ class LoginForm extends Form {
     };
     
     render() { 
+        if (auth.getCurrentUser()) return <Redirect to="/" />;
         return ( <div>
             <h1>Login</h1>
             <form onSubmit={this.handleSubmit}>
